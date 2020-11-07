@@ -7,21 +7,21 @@ require 'polygon_client/rest/crypto/client'
 
 module PolygonClient
   # Top-level Polygon.io REST API client.
-  # @param [String] api_key your polygon.io API key
+  # @param [String] apiKey your polygon.io API key
   # @see https://polygon.io/docs/#getting-started
   class RestClient
-    def initialize(api_key = nil)
-      if api_key.nil?
+    def initialize(apiKey = nil)
+      if apiKey.nil?
         raise PolygonClient::PolygonError,
               'Must supply a valid Polygon.io API key to RestClient'
       end
 
-      @api_key = api_key
+      @apiKey = apiKey
 
-      @reference = ReferenceClient.new(api_key)
-      @stocks = StocksClient.new(api_key)
-      @forex = ForexClient.new(api_key, @stocks)
-      @crypto = CryptoClient.new(api_key, @stocks)
+      @reference = ReferenceClient.new(apiKey)
+      @stocks = StocksClient.new(apiKey)
+      @forex = ForexClient.new(apiKey, @stocks)
+      @crypto = CryptoClient.new(apiKey, @stocks)
     end
 
     attr_reader :reference

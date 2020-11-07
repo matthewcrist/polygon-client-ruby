@@ -3,19 +3,19 @@ RSpec.describe PolygonClient::RestClient do
     expect{ PolygonClient::RestClient.new }.to raise_error(PolygonClient::PolygonError)
   end
   it "rest client initializes reference client" do
-    client = PolygonClient::RestClient.new("api_key")
+    client = PolygonClient::RestClient.new("apiKey")
     expect(client.reference).to be_a(PolygonClient::ReferenceClient)
   end
   it "rest client initializes stocks client" do
-    client = PolygonClient::RestClient.new("api_key")
+    client = PolygonClient::RestClient.new("apiKey")
     expect(client.stocks).to be_a(PolygonClient::StocksClient)
   end
   it "rest client initializes forex client" do
-    client = PolygonClient::RestClient.new("api_key")
+    client = PolygonClient::RestClient.new("apiKey")
     expect(client.forex).to be_a(PolygonClient::ForexClient)
   end
   it "rest client initializes crypto client" do
-    client = PolygonClient::RestClient.new("api_key")
+    client = PolygonClient::RestClient.new("apiKey")
     expect(client.crypto).to be_a(PolygonClient::CryptoClient)
   end
 end

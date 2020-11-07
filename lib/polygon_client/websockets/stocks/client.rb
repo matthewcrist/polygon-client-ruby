@@ -6,24 +6,24 @@ require 'polygon_client/websockets/transport'
 
 module PolygonClient
   # Polygon.io Stocks Websocket API client.
-  # @param [String] api_key your polygon.io API key
+  # @param [String] apiKey your polygon.io API key
   # @see https://polygon.io/sockets
   class StocksWebsocketClient
     include EventEmitter
 
-    def initialize(api_key = nil)
-      if api_key.nil?
+    def initialize(apiKey = nil)
+      if apiKey.nil?
         raise PolygonClient::PolygonError.new,
               'Must supply a valid Polygon.io API key'
       end
 
-      @api_key = api_key
+      @apiKey = apiKey
     end
 
     def connect
       @ws = WebSocket::Client::Simple.connect "#{POLYGON_WS_URL}/stocks"
       @ws.on :open do
-        auth = { action: 'auth', params: @api_key }
+        auth = { action: 'auth', params: @apiKey }
         @ws.send auth
       end
 
